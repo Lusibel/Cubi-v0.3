@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 60%;
+    }
+        th, td {
+      padding: 10px;
+      border: 1px solid #333;
+    }
+        .leaderboard-container {
+            margin: 20px 0;
+        }
+        .leaderboard-item {
+            font-size: 17px;
+        }
+        .input-container input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .input-container button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .restart-button{
+            font-size: 25px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <body>
+      <div class="container">
+        <h1>CUBI v0.3</h1>
+        <p><h2>tabla de clasificasion</h2></p>
+  <table>
+    <th><div class="user-time" id="userTime">
+    </div>
+            <div class="leaderboard-container">
+            <div class="leaderboard leaderboard-column" id="leaderboardLeft">
+            </div>
+            <div class="leaderboard leaderboard-column" id="leaderboardRight">
+            </div>
+        </div></th>
+  </table><div class="input-container" id="inputContainer">
+            <input type="text" id="playerName" placeholder="Nombre del puntaje">
+            <button id="submitNameButton">Subir</button>
+        </div>
+    <p><button class="restart-button" id="restartButton">Volver al inicio</button>
+        <div class="footer-text">
+        </div></p>
+    </div>
+    <script>
+        let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+        const leaderboardLeft = document.getElementById('leaderboardLeft');
+        const leaderboardRight = document.getElementById('leaderboardRight');
+        const inputContainer = document.getElementById('inputContainer');
+        const playerNameInput = document.getElementById('playerName');
+        const submitNameButton = document.getElementById('submitNameButton');
+        const restartButton = document.getElementById('restartButton');
+        const userTimeElement = document.getElementById('userTime');
+        function updateLeaderboard() {
+            leaderboardLeft.innerHTML = '';
+            leaderboardRight.innerHTML = '';
+            leaderboard.slice(0, 5).forEach((record, index) => {
+                const recordElement = document.createElement('div');
+                recordElement.className = 'leaderboard-item';
+                recordElement.textContent = `${index + 1}. ${record.name} - ${record.time}s`;
+                leaderboardLeft.appendChild(recordElement);
+            });
+            leaderboard.slice(5, 10).forEach((record, index) => {
+                const recordElement = document.createElement('div');
+                recordElement.className = 'leaderboard-item';
+                recordElement.textContent = `${index + 6}. ${record.name} - ${record.time}s`;
+                leaderboardRight.appendChild(recordElement);
+            });
+            const resetButton = document.createElement('button');
+            resetButton.className = 'reset-button hidden';
+            resetButton.textContent = 'Reset Leaderboard';
+            resetButton.onclick = () => {
+                localStorage.removeItem('leaderboard');
+                leaderboard = [];
+                updateLeaderboard();
+            };
+            leaderboardLeft.appendChild(resetButton);
+            userTimeElement.innerHTML = localStorage.getItem('endTime') 
+                ? `Tu tiempo: ${parseFloat(localStorage.getItem('endTime'))}s` 
+                : 'Tu tiempo: --s';
+        }
+        function checkAndAddRecord(time) {
+            if (leaderboard.length < 10 || time < leaderboard[leaderboard.length - 1].time) {
+                inputContainer.style.display = 'block';
+                submitNameButton.onclick = () => {
+                    const playerName = playerNameInput.value.trim().substring(0, 10);
+                    if (playerName) {
+                        leaderboard.push({ name: playerName, time: time });
+                        leaderboard.sort((a, b) => a.time - b.time);
+                        if (leaderboard.length > 10) leaderboard.pop();
+                        localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+                        updateLeaderboard();
+                        inputContainer.style.display = 'none';
+                    }
+                };
+            }
+        }
+        restartButton.onclick = () => {
+            const currentUrl = window.location.href;
+            let redirectUrl = 'index.html';
+            if (currentUrl.includes('leaderboard.html')) {
+                redirectUrl = 'index.html';
+            } else {
+                redirectUrl = currentUrl.replace('leaderboard.html', 'index.html');
+            }
+            window.location.href = redirectUrl;
+        };
+        updateLeaderboard();
+        const endTime = localStorage.getItem('endTime');
+        if (endTime) {
+            checkAndAddRecord(parseFloat(endTime));
+            localStorage.removeItem('endTime');
+        }
+    </script>
+</body>
+</html>

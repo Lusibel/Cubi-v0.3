@@ -1,0 +1,163 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+canvas {
+    background: #A9A9A9;
+    display: block;
+    width: calc(100% - 210px);
+    height: 100%;
+}
+.controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    height: 120px;
+    pointer-events: none;
+}
+.button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #555;
+    border-radius: 10px;
+    pointer-events: auto;
+    position: absolute;
+}
+#upButton {
+    bottom: 80px;
+    left: 25px;
+}
+#downButton {
+    bottom: -10px;
+    left: 25px;
+}
+#leftButton {
+    bottom: 35px;
+    left: -20px;
+}
+#rightButton {
+    bottom: 35px;
+    left: 70px;
+}
+.button img {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.grab-control {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    pointer-events: auto;
+    background-color: #555;
+    border-radius: 10px;
+}
+.attack-control{
+    bottom: 60px;
+    right: 1px;
+    background-color: #8F0000;
+    display: none;
+}
+.inventory {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+}
+.inventory-item {
+    width: 50px;
+    height: 50px;
+    background-color: #666;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+.inventory-item img {
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+}
+#bossHpBar {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 20px;
+    background-color: #4E4E4E;
+    display: none;
+}
+
+#bossHpBarInner {
+    width: 100%;
+    height: 100%;
+    background-color: #00CA16;
+}
+#playerLives {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+}
+.life {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    margin-left: 5px;
+    border-radius: 50%;
+}
+#warningMessage {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    display: none;
+}
+#warningMessage2 {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    display: none;
+}

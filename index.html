@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cubi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="bossHpBar"><div id="bossHpBarInner"></div></div>
+        <div id="playerLives">
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+        </div>
+        <div id="warningMessage">Necesitas la llave del jefe</div>
+        <div id="warningMessage2"><img src="https://img.icons8.com/ios-filled/50/ffffff/hand-cursor.png"></div>
+        <div class="controls">
+            <div class="button" id="upButton"><img src="https://img.icons8.com/ios-filled/50/ffffff/up.png" alt="Up"></div>
+            <div class="button" id="downButton"><img src="https://img.icons8.com/ios-filled/50/ffffff/down.png" alt="Down"></div>
+            <div class="button" id="leftButton"><img src="https://img.icons8.com/ios-filled/50/ffffff/left.png" alt="Left"></div>
+            <div class="button" id="rightButton"><img src="https://img.icons8.com/ios-filled/50/ffffff/right.png" alt="Right"></div>
+        </div>
+        <div class="grab-control" id="grabButton"><img src="https://img.icons8.com/ios-filled/50/ffffff/hand-cursor.png" alt="Grab">
+        <div class="button attack-control" id="attackButton">attack<alt="attack"></div>
+        </div>
+        <div class="inventory">
+            <div class="inventory-item" id="inventoryKey"><img src="https://img.icons8.com/ios-filled/50/ffffff/key.png" alt="Key"></div>
+            <div class="inventory-item" id="inventoryMasterKey"><img src="https://img.icons8.com/?size=100&id=qOIneWWu24WI&format=png&color=000000"></div>
+        </div>
+    <script src="game.js"></script>
+</body>
+</html>
