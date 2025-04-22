@@ -139,7 +139,7 @@ const objects = [
     { x: 700, y: 900, width: 30, height: 30, color: 'yellow', type: 'key' },
     { x: 250, y: 200, width: 20, height: 50, color: 'brown', type: 'door' },
     { x: 1100, y: 1600, width: 120, height: 20, color: 'brown', type: 'door' },
-    { x: 1960, y: 800, width: 20, height: 80, color: 'purple', type: 'masterDoor' },
+    { x: 1600, y: 820, width: 20, height: 80, color: 'purple', type: 'masterDoor' },
     { x: 1100, y: 1800, width: 30, height: 30, color: 'orange', type: 'masterKey' },
     { x: 20, y: 1300, width: 30, height: 30, color: '#7AE1FF', type: 'sword' } // Espada
 ];
