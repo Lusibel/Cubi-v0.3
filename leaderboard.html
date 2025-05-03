@@ -118,11 +118,11 @@
         }
         restartButton.onclick = () => {
             const currentUrl = window.location.href;
-            let redirectUrl = 'game.js';
+            let redirectUrl = 'inde.html';
             if (currentUrl.includes('leaderboard.html')) {
-                redirectUrl = 'game.js';
+                redirectUrl = 'index.html';
             } else {
-                redirectUrl = currentUrl.replace('leaderboard.html', 'game.js');
+                redirectUrl = currentUrl.replace('leaderboard.html', 'index.html');
             }
             window.location.href = redirectUrl;
         };
